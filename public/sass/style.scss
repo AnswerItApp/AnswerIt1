@@ -6,7 +6,7 @@ $font-arial: Arial , sans-serif;
 $font-opensans: "Open Sans", Arial , sans-serif;
 
 // Overrides
-$grid-gutter-width: 40px !default; 
+$grid-gutter-width: 40px !default;
 $border-radius-base:  4px !default;
 $padding-base-vertical: 14px !default;
 
@@ -59,7 +59,7 @@ $navbar-height:                  60px !default;
 }
 
 @mixin icomoon() {
-	
+
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -71,7 +71,7 @@ $navbar-height:                  60px !default;
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	
+
 }
 
 // Import Bootstrap
@@ -81,7 +81,7 @@ $navbar-height:                  60px !default;
 
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *	Edit this section
 *
 * ======================================================= */
@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   background: $brand-selection-color;
 }
 #fh5co-menu {
-	background: transparent; 
+	background: transparent;
 	position: absolute;
 	top: 0;
 	z-index: 999;
@@ -141,9 +141,9 @@ h1, h2, h3, h4, h5, h6 {
 	@include transition(.5s);
 	@include border-radius(0px);
 	margin-top: 20px;
-	
+
 	&.sleep {
-	
+
 		-webkit-transform: translateY(-100%);
 		-moz-transform: translateY(-100%);
 		-ms-transform: translateY(-100%);
@@ -199,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	width: 100%;
 	background: $brand-white;
-}	
+}
 
 #fh5co-offcanvass {
 	position: fixed;
@@ -227,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 		letter-spacing: 2px;
 		color: $brand-gray;
 		text-transform: uppercase;
-		margin-bottom: 20px;	
+		margin-bottom: 20px;
 	}
 	ul {
 		padding: 0;
@@ -294,7 +294,7 @@ h1, h2, h3, h4, h5, h6 {
 		letter-spacing: 1px;
 		font-weight: bold;
 		padding: 0;
-		margin: 40px 0 0 0;	
+		margin: 40px 0 0 0;
 		a {
 			color: $brand-black;
 			padding: 0;
@@ -356,14 +356,14 @@ h1, h2, h3, h4, h5, h6 {
 		padding-bottom: 2em;
 		height: inherit;
 	}
-	
+
 	.fh5co-intro {
 		// position: absolute;
 		width: 100%;
 		color: $brand-white;
 		z-index: 12;
 		position: relative;
-		
+
 		.fh5co-intro-img {
 			text-align: right;
 			bottom: -5em;
@@ -518,7 +518,7 @@ h1, h2, h3, h4, h5, h6 {
 		   color: rgba(255,255,255,.5);
 		}
 
-		&:-ms-input-placeholder {  
+		&:-ms-input-placeholder {
 		   color: rgba(255,255,255,.3);
 		}
 	}
@@ -586,9 +586,9 @@ h1, h2, h3, h4, h5, h6 {
 		display: block;
 		margin-bottom: 20px;
 		i {
-			color: $brand-secondary;	
+			color: $brand-secondary;
 		}
-		
+
 	}
 }
 
@@ -615,9 +615,9 @@ h1, h2, h3, h4, h5, h6 {
 		display: block;
 		margin-bottom: 20px;
 		i {
-			color: $brand-secondary;	
+			color: $brand-secondary;
 		}
-		
+
 	}
 	.fh5co-image {
 		@media screen and (max-width: $screen-md) {
@@ -631,9 +631,9 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
-	
+
 #fh5co-faqs {
-	
+
 	.faq-accordion {
 		position: relative;
 		float: left;
@@ -675,8 +675,8 @@ h1, h2, h3, h4, h5, h6 {
 				float: left;
 			}
 		}
-		
-		
+
+
 		.faq-body {
 			clear: both;
 			display: none;
@@ -703,9 +703,9 @@ h1, h2, h3, h4, h5, h6 {
 				-ms-transform: rotate(-180deg);
 				-o-transform: rotate(-180deg);
 				transform: rotate(-180deg);
-			
+
 			}
-			
+
 		}
 	}
 }
@@ -932,7 +932,7 @@ h1, h2, h3, h4, h5, h6 {
 		.fh5co-hero-intro {
 			display: table-cell;
 			vertical-align: middle;
-			
+
 			.fh5co-lead, .fh5co-sub-lead {
 				color: $brand-white;
 				margin: 0;
@@ -995,7 +995,7 @@ pre {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	margin-right: 10px;
-	font-size: 11px;
+	font-size: 15px;
 	font-weight: 400;
 	&:hover, &:focus, &:active {
 		// box-shadow: none!important;
@@ -1045,18 +1045,18 @@ pre {
 .btn-warning {
 	background: $brand-warning;
 }
-.btn-primary, 
-.btn-success, 
-.btn-info, 
-.btn-warning, 
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
 .btn-danger {
 	border-color: transparent;
 }
-.btn-default, 
-.btn-primary, 
-.btn-success, 
-.btn-info, 
-.btn-warning, 
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
 .btn-danger {
 	&:hover, &:active, &:focus {
 		// background: $brand-darker;
@@ -1064,13 +1064,13 @@ pre {
 	}
 }
 
-// Input Text 
+// Input Text
 .form-control {
 	box-shadow: none!important;
 	border: 2px solid $brand-darker;
 	background: transparent;
 	font-family: $font-monsterrat;
-	&:hover, 
+	&:hover,
 	&:focus,
 	&:active {
 		outline: none;
@@ -1156,11 +1156,11 @@ pre {
 		padding: 5em 0;
 	}
 
-	
+
 	p {
 		display: block;
 	}
-	
+
 	.fh5co-copyright small {
 		font-size: 12px;
 	}
@@ -1178,8 +1178,8 @@ pre {
 			color: $brand-secondary;
 		}
 	}
-	
-	
+
+
 	.fh5co-footer-logo {
 		display: block;
 		float: left;
@@ -1472,14 +1472,14 @@ pre {
 
 .owl-carousel .owl-controls .owl-nav .owl-next {
 	right: 0;
-	margin-right: -40px;	
+	margin-right: -40px;
 	&:hover {
 		margin-right: -50px;
 	}
 	@media screen and (max-width: $screen-md) {
-		margin-right: 0px;	
+		margin-right: 0px;
 	}
-	
+
 }
 .owl-carousel .owl-controls .owl-nav .owl-prev {
 	left: 0;
@@ -1488,9 +1488,9 @@ pre {
 		margin-left: -50px;
 	}
 	@media screen and (max-width: $screen-md) {
-		margin-left: 0px;	
+		margin-left: 0px;
 	}
-	
+
 }
 
 .owl-theme .owl-controls .owl-nav {
@@ -1517,7 +1517,7 @@ pre {
 	text-align: center;
 }
 .owl-carousel-fullwidth.owl-theme .owl-dots {
-	bottom: 0;	
+	bottom: 0;
 	margin-bottom: 2.5em;
 }
 .owl-theme .owl-dots .owl-dot span {
@@ -1594,7 +1594,7 @@ pre {
 
 img {
 	&.fh5co-align-right {
-		float:right; 
+		float:right;
 		margin:0 0 .5em 1em;
 		@media screen and (max-width: $screen-xs) {
 			width: 100%;
