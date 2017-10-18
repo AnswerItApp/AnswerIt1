@@ -1443,6 +1443,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+.img-responsive1 {
+  width: 100%;
+     max-width: 580px;
+  height: auto;
+    margin-bottom: 120px;
+    display: block;
+}
 
 .img-rounded {
   border-radius: 6px;
@@ -7328,7 +7335,7 @@ button.close {
 }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *	Edit this section
 *
 * ======================================================= */
