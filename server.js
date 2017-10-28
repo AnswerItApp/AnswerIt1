@@ -7,6 +7,7 @@ var router = require('express').Router();
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+
 app.use(morgan('dev'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
