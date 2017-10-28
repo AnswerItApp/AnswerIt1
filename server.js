@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
 var router = require('express').Router();
-
+var rp = require('request-promise');
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -15,6 +15,12 @@ app.set('port', (process.env.PORT || 4000));
 
 app.get('/', function(req, res){
   res.render('home');
+});
+
+app.get('/:id', function(req, res){
+  rp(`api.answerit.online/auth/veryfi/${req.params.id}`)
+    .then(success => res.render('veryfi', {msg: success.message}))
+    .catch(err => res.render('veryfi', {msg: err.message}))
 });
 
 router.post('/contact', function(req, res){
@@ -45,11 +51,11 @@ transporter.sendMail(mailOptions, function(error, info){
    if(error) {
     console.log(error);
      res.redirect('/');
-  } else {
-    res.redirect('/');
-  };
+    } else {
+      res.redirect('/');
+    };
    });
-   });
+ });
 
 
 app.listen(app.get('port'), function() {
