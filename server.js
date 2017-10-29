@@ -1,20 +1,59 @@
 var express = require('express');
 var morgan = require('morgan');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
-var router = require('express').Router();
+var session = require('express-session');
 var rp = require('request-promise');
+var secret = require('./config/secret');
+var MongoStore = require('connect-mongo/es5')(session);
+var flash = require('express-flash');
+var passport = require('passport');
+var expressValidator = require('express-validator');
+
+
+var nodemailer = require('nodemailer');
 var app = express();
 
-app.use(express.static(__dirname + '/public'));
 
+
+
+mongoose.connect(secret.database, function(err){
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Connected to the database");
+  }
+});
+
+app.set('port', (process.env.PORT || 4000));
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(expressValidator());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: secret.secretKey,
+  store: new MongoStore({ url: secret.database, autoReconnect: true})
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next){
+  res.locals.session = req.session;
+  next();
+});
+
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
-app.set('port', (process.env.PORT || 4000));
+var mainRoutes = require('./routes/main');
+app.use(mainRoutes);
 
 app.get('/', function(req, res){
-  res.render('home');
+  res.render('home', { message: req.flash('message'), errors: req.flash('errors')});
 });
 
 app.get('/:id', function(req, res){
@@ -22,40 +61,6 @@ app.get('/:id', function(req, res){
     .then(success => res.render('veryfi', {msg: success.message}))
     .catch(err => res.render('veryfi', {msg: err.message}))
 });
-
-router.post('/contact', function(req, res){
-  req.check('email', 'Niepoprawny email').isEmail();
-  var errors = req.validationErrors();
-  if (errors) {
-    req.session.errors = errors;
-  }
-  var transporter = nodemailer.createTransport({
-  host: "smtp.zoho.eu", // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  auth: {
-    user: 'kontakt@monache-sklep.pl',
-    pass: 'monika20'
-  }
-});
-
-var mailOptions = {
-  from: 'Monache <kontakt@monache-sklep.pl>',
-    to: 'kontakt@monache-sklep.pl',
-    subject: 'Zapytanie',
-   text: 'Masz następującą wiadomość:  Imię: ' + req.body.name+ 'Email: '+req.body.email+ 'Treść: '+req.body.message,
-   html: '<p> Masz następującą wiadomość: </p><ul><li>Imię: '+req.body.name+'</li><li>Email: '+req.body.email+'</li><li>Treść: '+req.body.message+'</li></ul>',
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-   if(error) {
-    console.log(error);
-     res.redirect('/');
-    } else {
-      res.redirect('/');
-    };
-   });
- });
 
 
 app.listen(app.get('port'), function() {

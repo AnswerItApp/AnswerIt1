@@ -87,6 +87,24 @@
 		</p>
 	</div>
 
+	<% if (message.length > 0) { %>
+	 <div class="alert alert-success alert-dismissible">
+	   <button type="button" class="close" data-dismmiss="alert" aria-label="Close">
+	     <span aria-hidden="true">&times;</span>
+	   </button>
+	   <%= message %>
+	 </div>
+	<% } %>
+
+	<% if (errors.length > 0) { %>
+	 <div class="alert alert-danger alert-dismissible">
+		 <button type="button" class="close" data-dismmiss="alert" aria-label="Close">
+			 <span aria-hidden="true">&times;</span>
+		 </button>
+		 <%= errors %>
+	 </div>
+	<% } %>
+
 	<div id="fh5co-menu" class="navbar">
 		<div class="container">
 			<div class="row">
@@ -242,23 +260,17 @@
 						<div class="row animate-box">
 							<form action="#" method="post">
 								<div class="col-md-3 col-sm-3">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="First Name">
-									</div>
+
 								</div>
 								<div class="col-md-3 col-sm-3">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Last Name">
+										<input type="email" name="email" class="form-control" placeholder="Your Email">
 									</div>
 								</div>
+
 								<div class="col-md-3 col-sm-3">
 									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Email">
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-3">
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary" value="Subscribe">
+										<input type="submit" class="btn btn-primary" value="Subscribe to our newsletter">
 									</div>
 								</div>
 							</form>
@@ -280,7 +292,30 @@
 
 						</div>
 						<div class="col-md-3 col-sm-4 col-md-push-3">
+							<section class="content">
+							            <div class="container">
+							<div class="row">
 
+
+							<div class="col-sm-8 contact-form">
+							<form action="contact" id="contact" method="post" class="form" role="form">
+							<div class="row">
+							<div class="col-xs-6 col-md-6 form-group">
+							<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
+							</div>
+							<div class="col-xs-6 col-md-6 form-group">
+							<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+							</div>
+							</div>
+							<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
+							<br />
+							<div class="row">
+							<div class="col-xs-12 col-md-12 form-group">
+							<button class="btn btn-primary pull-right" type="submit">Submit</button>
+							</form>
+							</div>
+							</div>
+							        </section>
 
 						</div>
 						<div class="col-md-3 col-sm-4 col-md-push-3">
