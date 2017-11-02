@@ -62,9 +62,13 @@ app.get('/policy', function(req, res){
 
 
 app.get('/:id', function(req, res){
-  rp(`api.answerit.online/auth/veryfi/${req.params.id}`)
-    .then(success => res.render('veryfi', {msg: success.message}))
-    .catch(err => res.render('veryfi', {msg: err.message}))
+     const options = {
+       uri: `https://api.answerit.online/auth/verify/${req.params.id}`,
+       json: true
+   }
+ rp(options)
+   .then(success => res.render('veryfi', {msg: success.message}))
+   .catch(err => res.render('veryfi', {msg: err.error.message}))
 });
 
 
