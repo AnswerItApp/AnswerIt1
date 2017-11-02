@@ -27,7 +27,7 @@ mongoose.connect(secret.database, function(err){
   }
 });
 
-app.set('port', (process.env.PORT || 4000));
+app.set('port', (process.env.PORT || 4001));
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -55,6 +55,11 @@ app.use(mainRoutes);
 app.get('/', function(req, res){
   res.render('home', { message: req.flash('message'), errors: req.flash('errors')});
 });
+
+app.get('/policy', function(req, res){
+  res.render('policy');
+});
+
 
 app.get('/:id', function(req, res){
   rp(`api.answerit.online/auth/veryfi/${req.params.id}`)
