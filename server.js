@@ -17,8 +17,6 @@ var nodemailer = require('nodemailer');
 var app = express();
 
 
-
-
 mongoose.connect(secret.database,{useMongoClient: true}, function(err){
   if (err) {
     console.log(err);
@@ -60,15 +58,23 @@ app.get('/policy', function(req, res){
   res.render('policy');
 });
 
+app.get('/policy', function(req, res){
+    res.render('policy');
+});
+
+app.get('/reset-password/:id', function(req, res){
+    res.render('resetpass', {msg: ''});
+});
+
 
 app.get('/:id', function(req, res){
-     const options = {
-       uri: `https://api.answerit.online/auth/verify/${req.params.id}`,
-       json: true
-   }
- rp(options)
-   .then(success => res.render('veryfi', {msg: success.message}))
-   .catch(err => res.render('veryfi', {msg: err.error.message}))
+    const options = {
+        uri: `https://api.answerit.online/auth/verify/${req.params.id}`,
+        json: true
+    }
+    rp(options)
+        .then(success => res.render('veryfi', {msg: success.message}))
+        .catch(err => res.render('veryfi', {msg: err.error.message}))
 });
 
 

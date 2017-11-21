@@ -1,6 +1,7 @@
 var nodemailer = require('nodemailer');
 var Mails = require('../models/newslettermails');
 var router = require('express').Router();
+var rp = require('request-promise');
 
 router.post('/savemail', function(req, res, next){
   var mails = new Mails();
@@ -19,6 +20,22 @@ router.post('/savemail', function(req, res, next){
       });
     }
   });
+});
+
+router.post('/newpass/reset-pass', function(req, res, next){
+        const id = req.body.location.split('/').pop();
+        delete req.body.location
+        const options = {
+            uri: `http://localhost:3000/auth/reset/${id}`,
+            body: req.body,
+            json: true,
+            method:'POST'
+        }
+        if(!req.body) return res.render('veryfi-resetpass', {msg: ''})
+        rp(options)
+            .then(success => res.render('veryfi-resetpass', {msg: success.message}))
+            .catch(err => res.render('veryfi-resetpass', {msg: err.error.message}))
+
 });
 
 router.post('/contact', function(req, res){
