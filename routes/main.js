@@ -26,12 +26,12 @@ router.post('/newpass/reset-pass', function(req, res, next){
         const id = req.body.location.split('/').pop();
         delete req.body.location
         const options = {
-            uri: `https://api.answerit.online/auth/reset/${id}`,
+            // uri: `https://api.answerit.online/auth/reset/${id}`,
+            uri: `http://localhost:3000/auth/reset/${id}`,
             body: req.body,
             json: true,
             method:'POST'
         }
-
         if(!req.body) return res.render('veryfi-resetpass', {msg: ''})
         rp(options)
             .then(success => res.render('veryfi-resetpass', {msg: success.message}))
