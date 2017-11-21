@@ -66,6 +66,10 @@ app.get('/reset-password/:id', function(req, res){
     res.render('resetpass', {msg: ''});
 });
 
+app.get('/reset/invalid', function(req, res){
+    res.render('invalid');
+});
+
 
 app.get('/:id', function(req, res){
     const options = {
